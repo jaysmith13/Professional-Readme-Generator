@@ -6,8 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": "git+https://github.com/jaysmith13/Professional-Readme-Generator.git",
+  "author": "Janea Smith",
   "license": "ISC",
+  "bugs":{
+    "url":"https://github.com/jaysmith13/Professional-Readme-Generator/issues"
+  }
+  "homepage": "https://github.com/jaysmith13/Professional-Readme-Generator#readme",
   "dependencies": {
     "inquirer": "^6.3.1"
   }

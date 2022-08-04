@@ -2,7 +2,7 @@
 
 ## Description
 
-This application will take the hassal out of creating a README.
+This application will make it easy and efficent to creating a README.
 
 ## Screenshot
 
