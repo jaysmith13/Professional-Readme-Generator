@@ -1,7 +1,7 @@
 {
   "name": "static-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "This application will create a readme page for the user",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
   "license": "ISC",
   "bugs":{
     "url":"https://github.com/jaysmith13/Professional-Readme-Generator/issues"
-  }
+  },
   "homepage": "https://github.com/jaysmith13/Professional-Readme-Generator#readme",
   "dependencies": {
     "inquirer": "^6.3.1"
