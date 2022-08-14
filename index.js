@@ -37,13 +37,13 @@ const questions = [{
 {
     type: "input",
     name: "installation",
-    message: "Please input valid install instructions"
+    message: "Please input valid application install instructions"
 },
 
 {   type: "Options",
     name:   "license",
-    message: "Please review and choose license options",
-    Choices:[
+    message: "Please review and choose read.me license options",
+    Choices: [
         "Academic Free License v3.0",
         "LaTeX Project Public License v1.3c",
         "Microsoft Public License",
@@ -70,12 +70,17 @@ const questions = [{
 },
 {    type: "input",
     name:"contributions",
-    message: "Please enter contributing guidelines"
+    message: "Please enter read.me contributing guidelines"
 },
 {
     type: "input",
     name: "test",
-    message: "Please input testing instructions here"
+    message: "Please input read.me testing instructions here"
+},
+{
+    type: "input",
+    name: "usage",
+    message: "Please input read.me usage"
 }
 
 
