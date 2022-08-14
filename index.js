@@ -7,6 +7,7 @@ const { type } = require('os');
 const { default: Choices } = require('inquirer/lib/objects/choices.js');
 
 //  Required functions Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
+
 // TODO: Create an array of questions for user input
 const questions = [{
     type: 'input',
@@ -41,7 +42,7 @@ const questions = [{
 },
 
 {   type: "Options",
-    name:   "license",
+    name:  "license",
     message: "Please review and choose read.me license options",
     Choices: [
         "Academic Free License v3.0",
@@ -81,12 +82,7 @@ const questions = [{
     type: "input",
     name: "usage",
     message: "Please input read.me usage"
-}
-
-
-
-
-
+};
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
