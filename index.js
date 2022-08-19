@@ -82,6 +82,16 @@ const questions = [{
     type: "input",
     name: "usage",
     message: "Please input read.me usage"
+},
+{
+    type:"input",
+    name:"email",
+    message: "Please input a valid email. (required)",
+    validate: input => {
+        if(input){return true;}
+        else{console.log('Please enter a valid email.')
+    return false;}
+    }
 };
 
 // TODO: Create a function to write README file
@@ -93,7 +103,7 @@ const init = () => {
     .then(readmeData => {
         return readmeData;
     })
-
+}
 
 // Function call to initialize app
 init()
