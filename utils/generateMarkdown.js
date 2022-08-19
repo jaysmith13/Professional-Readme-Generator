@@ -19,9 +19,16 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-`;
-}
 
-module.exports = generateMarkdown;
+const generateMarkdown = data => {
+return `# <div style="display: flex; flex-wrap: wrap; justify-content: space-between"><div>${data.title}</div><div>${renderLicenseBadge(data.license)}</div></div>
+## Description
+${data.description}
+## Table of Contents
+${dynamicTableOfContents(data)}
+${dynamicSections()}
+## Questions
+For questions, comments, or suggestions, please reach out to [${data.github}](https://github.com/${data.github}) via email at <a href="mailto:${data.email}">${data.email}</a>.
+`;};
+
+module.exports = {generateMarkdown, writeToFile };
