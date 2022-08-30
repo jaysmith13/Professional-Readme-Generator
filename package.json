@@ -1,5 +1,5 @@
 {
-  "name": "static-site",
+  "name": "Professional-Readme-Generator",
   "version": "1.0.0",
   "description": "This application will create a readme page for the user",
   "main": "index.js",

@@ -3,11 +3,8 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 const utils = require('utils');
-const { type } = require('os');
-const { default: Choices } = require('inquirer/lib/objects/choices.js');
-
+const writeToFile = require('./utils/generateMarkdown');
 //  Required functions Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-
 // TODO: Create an array of questions for user input
 const questions = [{
     type: 'input',
@@ -16,7 +13,7 @@ const questions = [{
     validate: input => {
         if(input){
             return true;
-        }else;{
+        }else{
             console.log('Please input the title.');
             return false;
         }
@@ -29,7 +26,7 @@ const questions = [{
     validate: input => {
         if(input){
             return true;
-        }else;{
+        }else{
             console.log('Please input a description.');
         }return false;
     }
@@ -38,7 +35,15 @@ const questions = [{
 {
     type: "input",
     name: "installation",
-    message: "Please input valid application install instructions"
+    message: "Please input valid application install directions (required)"
+    validate: installInput => {
+        if (installInput) {
+            return true;
+        } else {
+            console.log('Please input valid install directions');
+            return false;
+        }
+    }
 },
 
 {   type: "Options",
@@ -82,6 +87,15 @@ const questions = [{
     type: "input",
     name: "usage",
     message: "Please input read.me usage"
+    validate: usageInput => {
+        if (usageInput) {
+            return true;
+        } else {
+            console.log('Input read.me usage');
+            return false;
+        }
+    }
+},
 },
 {
     type:"input",
@@ -102,7 +116,6 @@ const writeFile = fileContent => {
                 reject(err);
                 return;
             }
-
             resolve({
                 ok: true,
                 message: 'File was successfully created.'
