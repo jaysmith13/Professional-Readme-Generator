@@ -113,7 +113,7 @@ const questions = [{
 {
     type: "input",
     name: "usage",
-    message: "Please input read.me usage"
+    message: "Please input read.me usage. (required)",
     validate: usageInput => {
         if (usageInput) {
             return true;
@@ -124,27 +124,28 @@ const questions = [{
     }
 },
 {
-    type:"input",
-    name:"email",
+    type: "input",
+    name: "email",
     message: "Please input a valid email. (required)",
-    validate: input => {
-        if(input){return true;}
-        else{console.log('Please enter a valid email.')
+    validate: Input => {
+        if(Input){return true;}
+        else{console.log('Please enter a valid email.');
     return false;}
     }
-};
-
+},
+]
 // TODO: Create a function to write README file
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/generated-README.md', fileContent, (err) => {
+        fs.writeFile('./dist/generated-README.md', fileContent, err => {
             if (err) {
                 reject(err);
                 return;
             }
+
             resolve({
                 ok: true,
-                message: 'File was successfully created.'
+                message: 'Congrats! File was successfully created!'
             });
         });
     });
@@ -152,7 +153,8 @@ const writeFile = fileContent => {
 
 // TODO: Create a function to initialize app
 const init = () => {
-    return inquirer.prompt(questions);
+
+    return inquirer.prompt(questions)
     .then(readmeData => {
         return readmeData;
     })
@@ -164,6 +166,12 @@ init()
     console.log(readmeData);
     return generateMarkdown(readmeData);
 })
-.catch(err=> console.log(err));
-.then(pageMD=> writeToFile (pageMD));
-.then(writeToFileResponse=> {console.log(writeToFileResponse.message); })
+.then(pageMD => {
+    return writeFile(pageMD);
+})
+.then(writeFileResponse => {
+    console.log(writeFileResponse.message);
+})
+.catch(err => {
+    console.log(err);
+})
