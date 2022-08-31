@@ -3,9 +3,11 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 const utils = require('utils');
-const writeToFile = require('./utils/generateMarkdown');
+const writeToFile = require('./utils/generateMarkdown.js');
+const { type } = require('os');
 //  Required functions Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 // TODO: Create an array of questions for user input
+
 const questions = [{
     type: 'input',
     name: 'title',
@@ -19,9 +21,10 @@ const questions = [{
         }
     }
 },
+
 {
-    type:"input",
-    name: "description",
+    type:'input',
+    name: 'description',
     message: "Input description (required):",
     validate: input => {
         if(input){
@@ -31,11 +34,11 @@ const questions = [{
         }return false;
     }
 },
-];
+
 {
-    type: "input",
-    name: "installation",
-    message: "Please input valid application install directions (required)"
+    type: 'input',
+    name: 'installation',
+    message: 'Please input valid application install directions (required)',
     validate: installInput => {
         if (installInput) {
             return true;
@@ -46,9 +49,9 @@ const questions = [{
     }
 },
 
-{   type: "Options",
-    name:  "license",
-    message: "Please review and choose read.me license options",
+{   type: 'Options',
+    name:  'license',
+    message: 'Please review and choose read.me license options',
     Choices: [
         "Academic Free License v3.0",
         "LaTeX Project Public License v1.3c",
@@ -63,9 +66,9 @@ const questions = [{
     ],
 },
 {
-    type: "input",
-    name: "username",
-    message: "Please input a valid GitHub username? (required)",
+    type: 'input',
+    name: 'username',
+    message: 'Please input a valid GitHub username? (required)',
     validate: GhInput => {
         if(ghInput){
             return true;
@@ -76,12 +79,36 @@ const questions = [{
 },
 {    type: "input",
     name:"contributions",
-    message: "Please enter read.me contributing guidelines"
-},
+    message: "Please enter read.me contributing guidelines",
+        when: ({ confirmContributers }) => {
+            if (confirmContributers) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: contributerInput => {
+            if (contributerInput) {
+                return true;
+            } else {
+                console.log('Please enter contributer guidelines!');
+                return false;
+            }
+        }
+    },
+
 {
     type: "input",
     name: "test",
-    message: "Please input read.me testing instructions here"
+    message: "Please input read.me testing instructions here",
+    validate: testInput => {
+        if (testInput) {
+            return true;
+        } else {
+            console.log('Please enter your use test instructions!');
+            return false;
+        }
+    }
 },
 {
     type: "input",
@@ -95,7 +122,6 @@ const questions = [{
             return false;
         }
     }
-},
 },
 {
     type:"input",
@@ -111,7 +137,7 @@ const questions = [{
 // TODO: Create a function to write README file
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/README.md', fileContent, (err) => {
+        fs.writeFile('./dist/generated-README.md', fileContent, (err) => {
             if (err) {
                 reject(err);
                 return;
