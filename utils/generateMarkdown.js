@@ -69,9 +69,9 @@ const renderLicenseSection = licensePresent => {
   }
 };
 
-const renderContributionSection = contributionPresent => {
-  if (contributionPresent) {
-    sections.push("## Contributing" + "\n" + contributionPresent);
+const renderContributersSection = contributersPresent => {
+  if (contributersPresent) {
+    sections.push("## Contributers" + "\n" + contributersPresent);
     return true;
   }
 };
@@ -100,7 +100,7 @@ const dynamicTableOfContents = sectionCheck => {
   let installation = renderInstallSection(sectionCheck.install);
   let usage = renderUsageSection(sectionCheck.usage);
   let license = renderLicenseSection(sectionCheck.license);
-  let contribution = renderContributionSection(sectionCheck.contribution);
+  let contributers = renderContributersSection(sectionCheck.contributers);
   let test = renderTestSection(sectionCheck.test);
   let questions = "[Questions](#questions)";
   let finalTocStr = "";
@@ -124,11 +124,11 @@ const dynamicTableOfContents = sectionCheck => {
   }else{
     license = "";
   }
-  if(contribution){
-    contribution = "[Contributing](#contributing)";
-    tocArray.push(contribution);
+  if(contributers){
+    contributers = "[contributers](#contributers)";
+    tocArray.push(contributers);
   }else{
-    contribution = "";
+    contributers = "";
   }
   if(test){
     test = "[Tests](#tests)"

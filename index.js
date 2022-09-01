@@ -1,8 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require('fs');
-const utils = require('utils');
+const utils = require('util');
 const writeToFile = require('./utils/generateMarkdown.js');
 const { type } = require('os');
 //  Required functions Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
@@ -38,7 +38,7 @@ const questions = [{
 {
     type: 'input',
     name: 'installation',
-    message: 'Please input valid application install directions (required)',
+    message: "Please input valid application install directions (required)",
     validate: installInput => {
         if (installInput) {
             return true;
@@ -51,18 +51,20 @@ const questions = [{
 
 {   type: 'Options',
     name:  'license',
-    message: 'Please review and choose read.me license options',
+    message: "Please review and choose read.me license options",
     Choices: [
-        "Academic Free License v3.0",
-        "LaTeX Project Public License v1.3c",
-        "Microsoft Public License",
-        "MIT",
-        "Mozilla Public License 2.0",
-        "Open Software License 3.0",
-        "PostgreSQL License",
-        "SIL Open Font License 1.1",
-        "The Unlicense",
-        "zLib License"
+        'Academic Free License v3.0',
+        'LaTeX Project Public License v1.3c',
+        'Microsoft Public License',
+        'MIT',
+        'Mozilla Public License 2.0',
+        'Open Software License 3.0',
+        'PostgreSQL License',
+        'SIL Open Font License 1.1',
+        'The Unlicense',
+        'zLib License',
+        'none'
+        
     ],
 },
 {
@@ -77,7 +79,8 @@ const questions = [{
         }return false;
     }
 },
-{    type: "input",
+{    
+    type: "input",
     name:"contributions",
     message: "Please enter read.me contributing guidelines",
         when: ({ confirmContributers }) => {
@@ -98,8 +101,8 @@ const questions = [{
     },
 
 {
-    type: "input",
-    name: "test",
+    type: 'input',
+    name: 'test',
     message: "Please input read.me testing instructions here",
     validate: testInput => {
         if (testInput) {
@@ -111,8 +114,8 @@ const questions = [{
     }
 },
 {
-    type: "input",
-    name: "usage",
+    type: 'input',
+    name: 'usage',
     message: "Please input read.me usage. (required)",
     validate: usageInput => {
         if (usageInput) {
